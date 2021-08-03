@@ -17,6 +17,7 @@
 棚卸における商品の読み込み時
 
 ## 設計書
+![ポートフォリオER図](https://user-images.githubusercontent.com/85168396/128015624-53945ecd-49b6-493b-8faf-b0bb4191af1b.jpg)
 
 
 ## チャレンジ要素一覧
