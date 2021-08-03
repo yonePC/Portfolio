@@ -1,24 +1,32 @@
-# README
+# 店内商品棚卸補助ツール
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
 
-Things you may want to cover:
+店内の商品の棚卸を実施するときに、読み込みした場所を投稿という形で報告することで誰がどこを読み込みしたのかを管理するアプリケーションです。
 
-* Ruby version
+### テーマを選んだ理由
 
-* System dependencies
+自分が前職にて棚卸がうまくいかず悔しい思いをした経験から、より効率的により精度の高い棚卸を実施できるツールがあれば良いと考えました。
 
-* Configuration
+### ターゲットユーザ
 
-* Database creation
+バーコードで管理された店内や倉庫などの商品をエリアを区切ってハンディターミナル等で読み込み棚卸を行う人。
 
-* Database initialization
+### 主な利用シーン
 
-* How to run the test suite
+棚卸における商品の読み込み時
 
-* Services (job queues, cache servers, search engines, etc.)
+## 設計書
 
-* Deployment instructions
 
-* ...
+## チャレンジ要素一覧
+
+<https://docs.google.com/spreadsheets/d/1E4Quehglf9PxM1XTE-ft2X5-hJ5dmoJhsI-UJlgzVmY/edit#gid=0>
+
+## 開発環境
+
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JS ライブラリ：jQuery
+- IDE：Cloud9
