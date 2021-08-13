@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  action_user_id: 1
+  adtioned_user_id: 1
+  post_id: 1
+  comment_id: 1
+  stamp_id: 1
+  check: false
+  action: MyString
+
+two:
+  action_user_id: 1
+  adtioned_user_id: 1
+  post_id: 1
+  comment_id: 1
+  stamp_id: 1
+  check: false
+  action: MyString
