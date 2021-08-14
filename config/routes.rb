@@ -1,4 +1,26 @@
 Rails.application.routes.draw do
+  get 'tags/index'
+  get 'tags/new'
+  get 'tags/crate'
+  get 'tags/destroy'
+  get 'notifications/index'
+  get 'stamps/crate'
+  get 'stamps/destroy'
+  get 'comments/crate'
+  get 'comments/destroy'
+  get 'posts/index'
+  get 'posts/show'
+  get 'posts/new'
+  get 'posts/crate'
+  get 'posts/edit'
+  get 'posts/update'
+  get 'posts/destroy'
+  get 'users/index'
+  get 'users/show'
+  get 'users/edit'
+  get 'users/update'
+  get 'users/complete'
+  get 'homes/top'
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
