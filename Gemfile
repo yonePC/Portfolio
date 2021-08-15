@@ -75,3 +75,7 @@ gem "refile-mini_magick"
 group :development do
   gem 'rubocop-airbnb'
 end
+
+group :production do
+  gem 'mysql2'
+end
