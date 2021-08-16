@@ -5,15 +5,16 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update]
   get 'users/complete'
 
-  resources :tags, only: [:index, :new, :crate, :destroy]
+  resources :tags, only: [:index, :new, :create, :destroy]
 
   get 'notifications/index'
 
-  resources :stamps, only: [:crate, :destroy]
+  resources :stamps, only: [:create, :destroy]
 
-  resources :comments, only: [:crate, :destroy]
+  resources :comments, only: [:create, :destroy]
 
-  resources :posts, only: [:index, :show, :new, :crate, :edit, :update, :destroy]
+  resources :posts, only: [:index, :show, :new, :create]
+  # resources :posts, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -1,2 +1,31 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<h1>投稿詳細</h1>
+
+<table class= "table">
+  <thead>
+    <tr>
+      <th>社員番号</th>
+      <th>名前</th>
+      <th>内容</th>
+    </tr>
+  <thead>
+
+  <tbody>
+    <td>
+      <%= @post.user.number %>
+    <td>
+
+    <td>
+      <%= @post.user.name %>
+    <td>
+
+    <td>
+      <%= @post.area %>
+    <td>
+
+    <td>
+      <%= @post.body %>
+    <td>
+
+  </tbody>
+
+</table>

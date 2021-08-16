@@ -5,7 +5,7 @@ class TagsController < ApplicationController
   def new
   end
 
-  def crate
+  def create
   end
 
   def destroy

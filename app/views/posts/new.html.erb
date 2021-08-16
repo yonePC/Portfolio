@@ -1,2 +1,20 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<h1>投稿</h1>
+
+<%= form_with model:@post, local:true do |f| %>
+
+<div>
+  <%= f.label "実施エリア" %>
+  <%= f.text_field :area %>
+</div>
+
+<div>
+  <%= f.label "内容" %>
+  <%= f.text_area :body %>
+</div>
+
+<div>
+  <%= f.submit "投稿する", class: "btn btn-success" %>
+</div>
+
+
+<% end %>

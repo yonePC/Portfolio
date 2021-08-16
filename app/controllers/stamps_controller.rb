@@ -1,5 +1,5 @@
 class StampsController < ApplicationController
-  def crate
+  def create
   end
 
   def destroy
