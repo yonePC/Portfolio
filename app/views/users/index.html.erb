@@ -1,2 +1,22 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<h1>ユーザー一覧</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>社員番号</th>
+      <th>名前</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+
+      <td><%= user.number %></td>
+      <td><%= user.name %></td>
+      <td><%= link_to '詳細', user_path(user) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
