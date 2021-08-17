@@ -25,5 +25,4 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get users_complete_url
     assert_response :success
   end
-
 end

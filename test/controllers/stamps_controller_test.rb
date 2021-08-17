@@ -10,5 +10,4 @@ class StampsControllerTest < ActionDispatch::IntegrationTest
     get stamps_destroy_url
     assert_response :success
   end
-
 end
