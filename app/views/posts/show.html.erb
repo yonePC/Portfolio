@@ -3,29 +3,38 @@
 <table class= "table">
   <thead>
     <tr>
+      <th></th>
       <th>社員番号</th>
       <th>名前</th>
+      <th>実施エリア</th>
       <th>内容</th>
     </tr>
   <thead>
 
   <tbody>
     <td>
-      <%= @post.user.number %>
+      <%= @post.datetime %>
+    </td>
+
     <td>
+      <%= @post.user.number %>
+    </td>
 
     <td>
       <%= @post.user.name %>
-    <td>
+    </td>
 
     <td>
       <%= @post.area %>
-    <td>
+    </td>
 
     <td>
       <%= @post.body %>
-    <td>
+    </td>
 
   </tbody>
 
 </table>
+
+<%= link_to "編集", edit_post_path(@post) %>
+<%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "削除しますか？"} %>

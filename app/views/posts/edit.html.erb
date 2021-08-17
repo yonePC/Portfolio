@@ -1,2 +1,21 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<h1>投稿編集</h1>
+
+<%= form_with model:@post, local: true do |f| %>
+
+<div>
+  <%= f.label "実施エリア" %>
+  <%= f.text_field :area %>
+</div>
+
+<div>
+  <%= f.label "内容" %>
+  <%= f.text_area :body %>
+</div>
+
+<div>
+  <%= f.submit "更新" %>
+</div>
+
+<% end %>
+
+<%= link_to "戻る", post_path(@post) %>
