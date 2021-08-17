@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  def crate
+  def create
   end
 
   def destroy

@@ -1,5 +1,5 @@
 class Stamp < ApplicationRecord
-  belongs_to :users
-  belongs_to :posts
+  belongs_to :user
+  belongs_to :post
   has_many :notifications
 end
