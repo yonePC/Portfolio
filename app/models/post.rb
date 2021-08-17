@@ -7,7 +7,7 @@ class Post < ApplicationRecord
     has_many  :tags, through: :post_tags
 
   def datetime
-  created_at.strftime("%Y/%M/%d %H:%M")
+    created_at.strftime("%Y/%m/%d %H:%M")
   end
 
 end
