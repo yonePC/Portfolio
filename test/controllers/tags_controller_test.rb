@@ -20,5 +20,4 @@ class TagsControllerTest < ActionDispatch::IntegrationTest
     get tags_destroy_url
     assert_response :success
   end
-
 end

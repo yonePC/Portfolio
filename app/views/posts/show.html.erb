@@ -8,6 +8,7 @@
       <th>名前</th>
       <th>実施エリア</th>
       <th>内容</th>
+      <th></th>
     </tr>
   <thead>
 
@@ -32,9 +33,41 @@
       <%= @post.body %>
     </td>
 
+    <td>
+      <%= link_to "編集", edit_post_path(@post) %>
+      <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "削除しますか？"} %>
+    </td>
   </tbody>
 
 </table>
 
-<%= link_to "編集", edit_post_path(@post) %>
-<%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "削除しますか？"} %>
+<h3>コメント(<%= @post.comments.count %>)</h3>
+<table class= "table">
+
+  <% @post.comments.each do |comment| %>
+  <tr>
+  <td>
+    <!--%= link_to user_path(comment_user) do %>-->
+      <%= comment.user.name %>
+    <!--% end %>-->
+  </td>
+
+  <td>
+    <%= comment.body %>
+      <% if current_user == comment.user %>
+      	<td><%= link_to "削除", post_comment_path(comment.post_id, comment.id), data: {confirm: "このコメントを削除しますか？"}, class: 'btn-sm btn-danger', method: :delete %></td>
+    	<% end %>
+
+  </td>
+  </tr>
+  <% end %>
+  </table>
+
+  <%= form_with model:[@post,@comment], local: true do |f| %>
+    <%= f.text_area :body, size:"90x5" %><br>
+    <%= f.submit "コメントを投稿"%>
+  <% end %>
+
+
+
+

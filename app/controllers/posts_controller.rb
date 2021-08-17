@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comment = Comment.new
   end
 
   def new
@@ -26,7 +27,6 @@ class PostsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
@@ -54,5 +54,4 @@ class PostsController < ApplicationController
       redirect_to posts_path
     end
   end
-
 end
