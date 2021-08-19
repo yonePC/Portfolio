@@ -9,9 +9,8 @@ Rails.application.routes.draw do
 
   get 'notifications/index'
 
-  resources :stamps, only: [:create, :destroy]
-
   resources :posts do
     resources :comments, only: [:create, :destroy]
+    resource :stamps, only: [:create, :destroy]
   end
 end
