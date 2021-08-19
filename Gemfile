@@ -75,3 +75,5 @@ gem "refile-mini_magick"
 group :development do
   gem 'rubocop-airbnb'
 end
+
+gem 'font-awesome-sass'
