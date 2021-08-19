@@ -8,6 +8,11 @@
 </div>
 
 <div>
+  <%= f.label "タグ" %>
+  <%= f.text_field :tag_ids, value: @tag_list, placeholder: "複数タグを登録する場合は','で区切ってください。" %>
+</div>
+
+<div>
   <%= f.label "内容" %>
   <%= f.text_area :body %>
 </div>

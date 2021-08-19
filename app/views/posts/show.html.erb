@@ -7,6 +7,7 @@
       <th>社員番号</th>
       <th>名前</th>
       <th>実施エリア</th>
+      <th>タグ</th>
       <th>内容</th>
       <th></th>
       <th></th>
@@ -28,6 +29,12 @@
 
     <td>
       <%= @post.area %>
+    </td>
+    
+    <td>
+      <% @post.tags.each do |tag| %>
+        <%= tag.name %>
+      <% end %>  
     </td>
 
     <td>
