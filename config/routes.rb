@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update]
   get 'users/complete'
 
-  resources :tags, only: [:index, :new, :create, :destroy]
+  resources :tags, only: [:index, :new, :create, :edit, :update, :destroy]
 
   get 'notifications/index'
 
