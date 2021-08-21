@@ -30,17 +30,18 @@
     <td>
       <%= @post.area %>
     </td>
-    
+
     <td>
       <% @post.tags.each do |tag| %>
         <%= tag.name %>
-      <% end %>  
+      <% end %>
     </td>
 
     <td>
       <%= @post.body %>
     </td>
 
+    <!--スタンプ-->
     <td>
       <% if @post.stamped_by?(current_user) %>
         <%= link_to post_stamps_path(@post), method: :delete, class: "fas fa-check-square fa-2x check_gleen" do %>
@@ -52,7 +53,7 @@
         (<%= @post.stamps.count %>)
       <% end %>
     </td>
-
+    <!--コメントの編集/削除-->
     <td>
       <%= link_to "編集", edit_post_path(@post) %>
       <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "削除しますか？"} %>
@@ -61,6 +62,7 @@
 
 </table>
 
+<!--コメント一覧-->
 <h3>コメント(<%= @post.comments.count %>)</h3>
 <table class= "table">
 
@@ -73,19 +75,51 @@
   <td>
     <%= comment.body %>
       <% if current_user == comment.user %>
-      	<td><%= link_to "削除", post_comment_path(comment.post_id, comment.id), data: {confirm: "このコメントを削除しますか？"}, class: 'btn-sm btn-danger', method: :delete %></td>
+      	<td><%= link_to "削除", post_comment_path(comment.post_id, comment.id), data: {confirm: "このコメントを削除しますか？"}, class: "btn-sm btn-danger", method: :delete %></td>
     	<% end %>
-
   </td>
+  <!--星評価表示-->
+  <td>
+    <div id="comment-rate-<%= comment.id %>"></div>
+        <script>
+          $('#comment-rate-<%= comment.id %>').raty({
+            size:  60,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= comment.rate %>,
+          });
+        </script>
+  </td>
+
   </tr>
   <% end %>
   </table>
-
+<!--コメント投稿-->
   <%= form_with model:[@post,@comment], local: true do |f| %>
     <%= f.text_area :body, size:"90x5" %><br>
+<!--星評価投稿-->
+    <div id= "rate-form", class="rate-form" >
+      <%= f.label :rate,"評価" %>
+      <%= f.hidden_field :rate, id: :review_star %>
+    </div>
+    <div>"<span id="hint1"></span>"</div>
+
     <%= f.submit "コメントを投稿"%>
   <% end %>
 
+    <script>
+      $('#rate-form').raty({
 
-
+          starOn: '<%= asset_path('star-on.png') %>',
+          starOff: '<%= asset_path('star-off.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          scoreName: 'comment[rate]',
+          half: true,
+          target: '#hint1',
+          hints: ["とても悪い", "悪い", "まあまあ", "良い", "とても良い"],
+      });
+    </script>
 
