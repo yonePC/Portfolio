@@ -1,4 +1,5 @@
 <h1>投稿詳細</h1>
+<%= asset_path('star-on.png') %>
 
 <table class= "table">
   <thead>
@@ -30,11 +31,11 @@
     <td>
       <%= @post.area %>
     </td>
-    
+
     <td>
       <% @post.tags.each do |tag| %>
         <%= tag.name %>
-      <% end %>  
+      <% end %>
     </td>
 
     <td>
@@ -73,19 +74,44 @@
   <td>
     <%= comment.body %>
       <% if current_user == comment.user %>
-      	<td><%= link_to "削除", post_comment_path(comment.post_id, comment.id), data: {confirm: "このコメントを削除しますか？"}, class: 'btn-sm btn-danger', method: :delete %></td>
+      	<td><%= link_to "削除", post_comment_path(comment.post_id, comment.id), data: {confirm: "このコメントを削除しますか？"}, class: "btn-sm btn-danger", method: :delete %></td>
     	<% end %>
-
   </td>
+  <td>
+    <div class="comment-rate" data-score="<%= comment.rate %>">評価：</div>
+  </td>
+
   </tr>
   <% end %>
   </table>
 
   <%= form_with model:[@post,@comment], local: true do |f| %>
     <%= f.text_area :body, size:"90x5" %><br>
+
+    <div id= "rate-form">
+      <label>評価：</label>
+      <!--%= f.hidden_field :rate, id: :comment_star %>-->
+    </div>
+
     <%= f.submit "コメントを投稿"%>
   <% end %>
 
+    <script>
+      $('#rate-form').raty({
+          starOn: '<%= asset_path('star-on.png') %>',
+          starOff: '<%= asset_path('star-off.png') %>',
+          scoreName: 'comment[rate]'
+      });
+    </script>
 
+    <script>
+     $('.comment-rate').raty({
+       readOnly: true,
+       score: function() {
+         return $(this).attr('data-score');
+       },
+       path: '/assets/'
+     });
+    </script>
 
 
