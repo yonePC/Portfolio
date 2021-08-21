@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :stamps, dependent: :destroy
+  has_many :active_notifications, class_name: "Notification", foreign_key: "action_user_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "ationed_user_id", dependent: :destroy
 end

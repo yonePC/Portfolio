@@ -1,0 +1,15 @@
+ <% action_user = notification.action_user %>
+ <% ationed_user = notification.ationed_user %>
+  <span>
+    <%= link_to user_path(notification.action_user) do %>
+      <strong><%= action_user.name %></strong>さんが
+    <% end %>
+  </span>
+
+
+  <% if notification.post.user_id == ationed_user.id %>
+      <%= link_to "あなたの投稿", notification.post, "font-weight: bold;" %>
+           にコメントしました
+      <%= time_ago_in_words(notification.created_at).upcase %>前
+  <% end %>
+
