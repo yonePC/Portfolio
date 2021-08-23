@@ -6,7 +6,6 @@ class Post < ApplicationRecord
   has_many :post_tags, dependent: :destroy
     has_many :tags, through: :post_tags
 
-
   def stamped_by?(user) # スタンプが押されているかの判定
     stamps.where(user_id: user.id).exists?
   end
@@ -23,7 +22,7 @@ class Post < ApplicationRecord
   end
 
   def update_tags(updatepost_tags) # タグ編集
-    current_tags = tags.pluck(:name) unless tags.nil?
+    current_tags = self.tags.pluck(:name) unless self.tags.nil?
     old_tags = current_tags - updatepost_tags
     new_tags = updatepost_tags - current_tags
 
@@ -36,6 +35,7 @@ class Post < ApplicationRecord
       tags << post_tag
     end
   end
+
   
   def create_notification_comment!(current_user, comment_id)
     save_notification_comment!(current_user, comment_id, user_id)
@@ -55,4 +55,5 @@ class Post < ApplicationRecord
     end
     notification.save if notification.valid?
   end
+
 end
