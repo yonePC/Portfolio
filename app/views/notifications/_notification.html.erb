@@ -1,23 +1,9 @@
  <% action_user = notification.action_user %>
  <% ationed_user = notification.ationed_user %>
-  <!--<span>-->
-  <!--  %= link_to user_path(action_user) do %>-->
-  <!--    <strong>%= action_user.name %></strong>さんが-->
-  <!--  % end %>-->
-  <!--</span>-->
   
   <%== notification_form(notification) %>
-  <%= " (#{time_ago_in_words(notification.created_at)} 前)" %>
+  <%= " (#{time_ago_in_words(notification.created_at)}前)" %>
   
   <% if !@comment.nil? %>
     <p class="moderate-font"><%= @comment.body %></p>
   <% end %>
-
-
-
-  <!--% if notification.post.user_id == ationed_user.id %>-->
-  <!--    %= link_to "あなたの投稿", notification.post, style:"font-weight: bold;" %>-->
-  <!--         にコメントしました-->
-  <!--    %= time_ago_in_words(notification.created_at).upcase %>前-->
-  <!--% end %>-->
-
