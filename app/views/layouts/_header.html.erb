@@ -5,8 +5,8 @@
     <%= link_to "Users",users_path,class: "fas fa-users nav-link " %>
     <%= link_to "Posts",posts_path ,class: "fas fa-book-open nav-link"%>
     <%= link_to "Notice",notifications_path ,class: "fas fa-bell nav-link" %>
-      <% if unchecked_notifications.any? %>
-        <i class="fas fa-circle"></i>
+      <% if current_user.passive_notifications.where(check: false).any? %>
+        <i class="fas fa-circle notification-circle" style= "color: gold;"></i>
       <% end %>  
     <%= link_to "logout", destroy_user_session_path, method: :delete,class: "fas fa-sign-out-alt nav-link" %>
   <% else %>

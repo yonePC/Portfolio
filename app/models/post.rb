@@ -7,62 +7,52 @@ class Post < ApplicationRecord
     has_many :tags, through: :post_tags
 
 
-  def stamped_by?(user) #スタンプが押されているかの判定
+  def stamped_by?(user) # スタンプが押されているかの判定
     stamps.where(user_id: user.id).exists?
   end
 
-  def datetime #時刻表示のフォーマット
-        created_at.strftime("%Y/%m/%d %H:%M")
+  def datetime # 時刻表示のフォーマット
+    created_at.strftime("%Y/%m/%d %H:%M")
   end
 
-  def save_tags(savepost_tags)   #タグ新規登録
+  def save_tags(savepost_tags) # タグ新規登録
     savepost_tags.each do |tag|
       post_tag = Tag.where(name: tag).first_or_create
-    self.tags << post_tag
+      tags << post_tag
     end
   end
 
-  def update_tags(updatepost_tags) #タグ編集
-    current_tags = self.tags.pluck(:name) unless self.tags.nil?
+  def update_tags(updatepost_tags) # タグ編集
+    current_tags = tags.pluck(:name) unless tags.nil?
     old_tags = current_tags - updatepost_tags
     new_tags = updatepost_tags - current_tags
 
     old_tags.each do |old_name|
-      self.tags.delete Tag.find_by(name: old_name)
+      tags.delete Tag.find_by(name: old_name)
     end
 
-     new_tags.each do |new_name|
+    new_tags.each do |new_name|
       post_tag = Tag.find_or_create_by(name: new_name)
-      self.tags << post_tag
+      tags << post_tag
     end
   end
   
   def create_notification_comment!(current_user, comment_id)
-    # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
-    # temp_ids = Comment.select(:user_id).where(post_id: id).where.not(user_id: current_user.id).distinct
-    # temp_ids.each do |temp_id|
-    #   save_notification_comment!(current_user, comment_id, temp_id["user_id"])
-    # end
-    
-    # まだ誰もコメントしていない場合は、投稿者に通知を送る
-    save_notification_comment!(current_user, comment_id, user_id) #if temp_ids.blank?
+    save_notification_comment!(current_user, comment_id, user_id)
   end
   
-    def save_notification_comment!(current_user, comment_id, ationed_user_id)
-      # コメントは複数回することが考えられるため、１つの投稿に複数回通知する
-      notification = current_user.active_notifications.new(
-        post_id: id,
-        comment_id: comment_id,
-        ationed_user_id: ationed_user_id,
-        action: "comment"
-      )
-      
-      # 自分の投稿に対するコメントの場合は、通知済みとする
-      if notification.action_user_id == notification.ationed_user_id
-        notification.checked = true
-      end
-      notification.save if notification.valid?
-    end  
-
-
+  def save_notification_comment!(current_user, comment_id, ationed_user_id)
+    # コメントは複数回することが考えられるため、１つの投稿に複数回通知する
+    notification = current_user.active_notifications.new(
+      post_id: id,
+      comment_id: comment_id,
+      ationed_user_id: ationed_user_id,
+      action: "comment"
+    )
+    # 自分の投稿に対するコメントの場合は、通知済みとする
+    if notification.action_user_id == notification.ationed_user_id
+      notification.checked = true
+    end
+    notification.save if notification.valid?
+  end
 end

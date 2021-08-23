@@ -17,7 +17,6 @@ class TagsController < ApplicationController
 
   def edit
     @tag = Tag.find(params[:id])
-
   end
 
   def update
@@ -40,5 +39,4 @@ class TagsController < ApplicationController
   def tag_params
     params.require(:tag).permit(:name)
   end
-
 end
