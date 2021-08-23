@@ -2,8 +2,15 @@
 
 <% notifications = @notifications.where.not(action_user_id: current_user.id) %>
 <% if notifications.exists? %>
-  <!--%= render "notice" %>-->
-  通知あり
+<!--% binding.pry %>-->
+  
+  <!--%= @notifications.each do |notice| %>-->
+  <!--%= notice.id %>-->
+  <!--% end %>-->
+  
+  <!--%= @notifications.action_user_id %>-->
+  <%= render @notifications %>
+  <!--通知あり-->
 <% else %>
 通知はありません
 <% end %>
