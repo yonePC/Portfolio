@@ -1,2 +1,9 @@
-<h1>Notifications#index</h1>
-<p>Find me in app/views/notifications/index.html.erb</p>
+<h1>通知一覧</h1>
+
+<% notifications = @notifications.where.not(action_user_id: current_user.id) %>
+<% if notifications.exists? %>
+  <%= render @notifications %>
+<% else %>
+通知はありません
+<% end %>
+

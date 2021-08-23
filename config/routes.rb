@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :tags, only: [:index, :new, :create, :edit, :update, :destroy]
 
-  get 'notifications/index'
+  resources :notifications, only: [:index]
 
   resources :posts do
     resources :comments, only: [:create, :destroy]
