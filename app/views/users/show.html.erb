@@ -1,53 +1,63 @@
-<h1>ユーザー詳細</h1>
- <%= link_to "編集", edit_user_path(@user) %>
- <table class="table">
-      <tr><td>社員番号</td><td><%= @user.number %></td></tr>
-      <tr><td>名前</td><td><%= @user.name %></td></tr>
-      <tr><td>メール</td><td><%= @user.email %></td></tr>
- </table>
+<div class="container">
+  <div class="row">
+    <div class="col-10">
+      <h2>
+        <td>ユーザー詳細</td>
+        <td><%= link_to "編集", edit_user_path(@user), class: "btn btn-secondary " %></td>
+      </h2>
 
- <h2>投稿一覧</h2>
- <table class= "table">
-  <thead>
-    <tr>
-      <th></th>
-      <th>社員番号</th>
-      <th>名前</th>
-      <th>実施エリア</th>
-      <th>内容</th>
-      <th></th>
-    </tr>
-   <thead>
+       <table class="table users_show">
+        <tr><td>社員番号</td><td><%= @user.number %></td></tr>
+        <tr><td>名前</td><td><%= @user.name %></td></tr>
+        <tr><td>メール</td><td><%= @user.email %></td></tr>
+       </table>
 
-   <tbody>
-    <td>
-      <%= @post.datetime %>
-    </td>
 
-    <td>
-      <%= @post.user.number %>
-    </td>
+       <h2>投稿一覧</h2>
+       <table class= "table users_index">
+        <thead>
+          <tr>
+            <th></th>
+            <th>社員番号</th>
+            <th>名前</th>
+            <th>実施エリア</th>
+            <th>内容</th>
+            <th></th>
+          </tr>
+         <thead>
 
-    <td>
-      <%= @post.user.name %>
-    </td>
+         <tbody>
+          <td>
+            <%= @post.datetime %>
+          </td>
 
-    <td>
-      <%= @post.area %>
-    </td>
+          <td>
+            <%= @post.user.number %>
+          </td>
 
-    <td>
-      <%= @post.body %>
-    </td>
+          <td>
+            <%= @post.user.name %>
+          </td>
 
-    <td>
-      <%= link_to "編集", edit_post_path(@post) %>
-      <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "削除しますか？"} %>
-    </td>
+          <td>
+            <%= @post.area %>
+          </td>
 
-   </tbody>
+          <td>
+            <%= @post.body %>
+          </td>
 
- </table>
+          <td>
+            <%= link_to "編集", edit_post_path(@post), class: "btn btn-secondary" %>
+            <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %>
+          </td>
+
+         </tbody>
+
+       </table>
+      </div>
+    </div>
+  </div>
 
 
 
