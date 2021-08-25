@@ -22,19 +22,38 @@
 // 	height:30px;
 }
 
-.users_index{
-  color: #668ad8; 
+body {
+  background-color: lightsteelblue;
+}
+
+
+
+.users_table{
+  padding: 0.5em 1em;
+    margin: 1em 0;
+    color: steelblue; /*文字色*/
+    background: #f1f8ff; /*白背景*/
+    border-top: solid 10px #caafde;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/
+}
+
+.users_index_thead{
+  background: #caafde;
+}
+
+.post_table{
+  color: #668ad8; /*文字色*/
   border: double 5px #668ad8;/*二重線 太さ 色*/
-  background: #f1f8ff; 
+  background: #f1f8ff;
   padding: 0.5em 0.5em 0.5em 2em;
 }
 
-.users_show{
-  padding: 0.5em 1em;
-    margin: 2em 0;
-    color: #00BCD4;
-    background: #f1f8ff;
-    // background: #e4fcff;/*背景色*/
-    border-top: solid 6px #1dc1d6;
-    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/
+
+.post_table_body{
+  color: #404040; /*文字色*/
+  border-bottom: solid 2px #dadada;/*下に灰色線*/
+  background: #f1f8ff;
+  padding: 0.5em;
+  font-weight: bold;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/
 }

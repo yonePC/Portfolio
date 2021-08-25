@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-10">
+    <div class="col-10 mt-3">
       <h2>
         <td>ユーザー詳細</td>
         <td><%= link_to "編集", edit_user_path(@user), class: "btn btn-secondary " %></td>
       </h2>
 
-       <table class="table users_show">
+       <table class="table table-striped users_table">
         <tr><td>社員番号</td><td><%= @user.number %></td></tr>
         <tr><td>名前</td><td><%= @user.name %></td></tr>
         <tr><td>メール</td><td><%= @user.email %></td></tr>
@@ -14,37 +14,43 @@
 
 
        <h2>投稿一覧</h2>
-       <table class= "table users_index">
-        <thead>
+       <table class= "table post_table">
+        <thead class="post_table">
           <tr>
-            <th></th>
-            <th>社員番号</th>
+            <th><!--時刻--></th>
             <th>名前</th>
             <th>実施エリア</th>
             <th>内容</th>
-            <th></th>
+            <th><!--コメント数--></th>
           </tr>
          <thead>
 
          <tbody>
+          <% @posts.each do |post| %>
+
+          <tr class="post_table_body">
+
           <td>
-            <%= @post.datetime %>
+            <%= post.datetime %>
           </td>
 
           <td>
-            <%= @post.user.number %>
+            <%= post.user.number %>
+            <%= post.user.name %>
+          </td>
+
+
+
+          <td>
+            <%= post.area %>
           </td>
 
           <td>
-            <%= @post.user.name %>
+            <%= post.body %>
           </td>
 
           <td>
-            <%= @post.area %>
-          </td>
-
-          <td>
-            <%= @post.body %>
+            コメント(<%= post.comments.count %>)
           </td>
 
           <td>
@@ -52,7 +58,10 @@
             <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %>
           </td>
 
-         </tbody>
+          </tr>
+
+          <% end %>
+        </tbody>
 
        </table>
       </div>
