@@ -1,7 +1,13 @@
  <% action_user = notification.action_user %>
  <% ationed_user = notification.ationed_user %>
-  
-  <%== notification_form(notification) %>
-  <%= " (#{time_ago_in_words(notification.created_at)}前)" %>
-  
-  <p class="moderate-font"><%= Post.find_by(id: notification.post_id).body %></p>
+
+  <div class = "notification font-weight-bold">
+    <%== notification_form(notification) %>
+    <%= " (#{time_ago_in_words(notification.created_at)}前)" %>
+    <p class="font-weight-normal">
+      <%= Post.find_by(id: notification.post_id).body %>
+      <% if current_user.passive_notifications.where(check: false).any? %>
+          NEW
+      <% end %>
+    </p>
+  </div>

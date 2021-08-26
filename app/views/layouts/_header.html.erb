@@ -13,7 +13,7 @@
             <li><%= link_to "Posts",posts_path ,class: "fas fa-book-open nav-link"%>
             <li><%= link_to "Notice",notifications_path ,class: "fas fa-bell nav-link" %></li>
               <% if current_user.passive_notifications.where(check: false).any? %>
-                <i class="fas fa-circle notification-circle" style= "color: gold;"></i>
+                <i class="fas fa-circle notification-circle"></i>
               <% end %>
             <li><%= link_to "logout", destroy_user_session_path, method: :delete,class: "fas fa-sign-out-alt nav-link" %></li>
           <% else %>
