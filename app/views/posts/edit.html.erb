@@ -1,26 +1,41 @@
-<h1>投稿編集</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <h2 class="text-center">投稿編集</h2>
+        <%= form_with model:@post, local: true do |f| %>
+        <table>
+        <thead></thead>
+        <tbody>
+        <tr>
+        <div>
+          <td><%= f.label "実施エリア" %></td>
+          <td><%= f.text_field :area, size: "35" %></td>
+        </div>
+        </tr>
 
-<%= form_with model:@post, local: true do |f| %>
+        <tr>
+        <div>
+          <td><%= f.label "タグ" %></td>
+          <td><%= f.text_field :tag_ids, value: @tag_list, placeholder: "複数タグを登録する場合は','で区切る", size: "35" %></td>
+        </div>
+        </tr>
 
-<div>
-  <%= f.label "実施エリア" %>
-  <%= f.text_field :area %>
+        <tr>
+        <div>
+          <td><%= f.label "内容" %></td>
+          <td><%= f.text_area :body, size: "38" %></td>
+        </div>
+      </tr>
+      </tbody>
+      </table>
+
+      <div>
+        <td><%= f.submit "更新", class: "btn btn-primary w-75 ml-5 mt-2" %></td>
+      </div>
+
+      <% end %>
+
+      <td><%= link_to "戻る", post_path(@post), class: "btn btn-secondary w-75 ml-5 mt-2" %></td>
+    </div>
+  </div>
 </div>
-
-<div>
-  <%= f.label "タグ" %>
-  <%= f.text_field :tag_ids, value: @tag_list, placeholder: "複数タグを登録する場合は','で区切ってください。" %>
-</div>
-
-<div>
-  <%= f.label "内容" %>
-  <%= f.text_area :body %>
-</div>
-
-<div>
-  <%= f.submit "更新" %>
-</div>
-
-<% end %>
-
-<%= link_to "戻る", post_path(@post) %>
