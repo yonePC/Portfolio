@@ -21,9 +21,8 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     if @post.save
       @post.save_tags(tag_list)
-      redirect_to post_path(@post)
+      redirect_to post_path(@post), notice: "投稿しました"
     else
-      @post = Post.new
       render "new"
     end
   end
@@ -36,7 +35,7 @@ class PostsController < ApplicationController
     tag_list = params[:post][:tag_ids].split(",")
     if @post.update(post_params)
       @post.update_tags(tag_list)
-      redirect_to post_path(@post), notice: "更新しました。"
+      redirect_to post_path(@post), notice: "投稿を更新しました"
     else
       render "edit"
     end
@@ -44,7 +43,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to posts_path, notice: "削除しました。"
+    redirect_to posts_path, notice: "投稿を削除しました"
   end
 
   private

@@ -3,7 +3,9 @@
     <div class="col-10 mt-3">
       <h2>
         <td>ユーザー詳細</td>
+        <% if current_user == @user %>
         <td><%= link_to "編集", edit_user_path(@user), class: "btn btn-secondary " %></td>
+        <% end %>
       </h2>
 
        <table class="table table-striped users_table">
@@ -12,11 +14,10 @@
         <tr><td>メール</td><td><%= @user.email %></td></tr>
        </table>
 
-
-        <h2>
-          <td>投稿一覧</td>
-          <td class="mt-auto"><%= link_to "＋", new_post_path, class: "btn btn-outline-secondary text-dark" %></td>
-        </h2>
+      <h2>
+        <td>投稿一覧</td>
+        <td class="mt-auto"><%= link_to "＋", new_post_path, class: "btn btn-outline-secondary text-dark" %></td>
+      </h2>
        <table class= "table table-hover post_table">
         <thead class="post_table">
           <tr>
@@ -30,42 +31,37 @@
 
          <tbody>
           <% @posts.each do |post| %>
-
           <tr class="post_table_body">
+            <td>
+              <%= post.datetime %>
+            </td>
 
-          <td>
-            <%= post.datetime %>
-          </td>
+            <td>
+              <%= post.user.number %>
+              <%= post.user.name %>
+            </td>
 
-          <td>
-            <%= post.user.number %>
-            <%= post.user.name %>
-          </td>
+            <td>
+              <%= post.area %>
+            </td>
 
+            <td>
+              <%= post.body %>
+            </td>
 
+            <td>
+              コメント(<%= post.comments.count %>)
+            </td>
 
-          <td>
-            <%= post.area %>
-          </td>
-
-          <td>
-            <%= post.body %>
-          </td>
-
-          <td>
-            コメント(<%= post.comments.count %>)
-          </td>
-
-          <td>
-            <%= link_to "編集", edit_post_path(post.user), class: "btn btn-secondary" %>
-            <%= link_to "削除", post_path(post.user), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %>
-          </td>
-
+            <td>
+              <% if current_user == post.user %>
+              <%= link_to "編集", edit_post_path(post.user), class: "btn btn-secondary" %>
+              <%= link_to "削除", post_path(post.user), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %>
+              <% end %>
+            </td>
           </tr>
-
           <% end %>
-        </tbody>
-
+         </tbody>
        </table>
       </div>
     </div>

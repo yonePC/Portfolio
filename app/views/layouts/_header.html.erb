@@ -10,7 +10,7 @@
           <% if user_signed_in? %>
             <li><%= link_to "マイページ",user_path(current_user),class: "fas fa-home nav-link" %></li>
             <li><%= link_to "ユーザー",users_path,class: "fas fa-users nav-link " %></li>
-            <li><%= link_to "投稿",posts_path ,class: "fas fa-book-open nav-link"%>
+            <li><%= link_to "投稿",posts_path ,class: "fas fa-comment nav-link"%>
             <li><%= link_to "通知",notifications_path ,class: "fas fa-bell nav-link" %></li>
               <% if current_user.passive_notifications.where(check: false).any? %>
                 <i class="fas fa-circle notification-circle"></i>

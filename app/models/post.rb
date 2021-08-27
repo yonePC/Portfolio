@@ -7,6 +7,9 @@ class Post < ApplicationRecord
   has_many :post_tags, dependent: :destroy
     has_many :tags, through: :post_tags
 
+  validates :area, presence: { message: "実施エリアを入力してください" }
+  validates :body, presence: { message: "内容を入力してください" }
+
   def stamped_by?(user) # スタンプが押されているかの判定
     stamps.where(user_id: user.id).exists?
   end
@@ -15,11 +18,10 @@ class Post < ApplicationRecord
     created_at.strftime("%Y/%m/%d %H:%M")
   end
 
-
   def save_tags(savepost_tags) # タグ新規登録
     savepost_tags.each do |tag|
       post_tag = Tag.where(name: tag).first_or_create
-    self.tags << post_tag
+      self.tags << post_tag
     end
   end
 
@@ -38,6 +40,7 @@ class Post < ApplicationRecord
     end
   end
 
+  # コメント通知
   def create_notification_comment!(current_user, comment_id)
     save_notification_comment!(current_user, comment_id, user_id)
   end
@@ -53,7 +56,7 @@ class Post < ApplicationRecord
     )
     # 自分の投稿に対するコメントの場合は、通知済みとする
     if notification.action_user_id == notification.ationed_user_id
-      notification.checked = true
+      notification.check = true
     end
     notification.save if notification.valid?
   end

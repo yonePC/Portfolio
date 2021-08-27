@@ -3,22 +3,16 @@
     <div class="col-5 mt-3 mx-auto">
       <h2>タグ一覧</h2>
 
-
         <table class= "table tags_table">
-            
-            <% @tags.each do |tag| %>
-            <tr>
-              <td><%= tag.name %></td>
-              <td>
-                <%= link_to "削除", tag_path(tag), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %>
-              </td>
-            
-            </tr>
-            <% end %>
-
-
-
+          <% @tags.each do |tag| %>
+          <tr>
+            <td><%= tag.name %></td>
+            <td>
+              <%= link_to "削除", tag_path(tag), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %>
+            </td>
+          </tr>
+          <% end %>
         </table>
-      </div>
     </div>
   </div>
+</div>

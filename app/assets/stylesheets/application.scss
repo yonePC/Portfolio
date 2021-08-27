@@ -30,6 +30,9 @@ body {
   background-color: lightsteelblue;
 }
 
+.error_explanation {
+  color: red;
+}
 
 .users_table{
   padding: 0.5em 1em;
@@ -114,7 +117,7 @@ body {
     left: -8px;
     padding: 0 9px;
     height: 30px;
-    line-height: 3px;
+    line-height: 25px;
     font-size: 17px;
     background: #FFC107;
     color: #ffffff;
