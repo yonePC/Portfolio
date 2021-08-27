@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users, only: [:index, :show, :edit, :update]
-  get 'users/complete'
 
   resources :tags, only: [:index, :new, :create, :edit, :update, :destroy]
 

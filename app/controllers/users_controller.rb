@@ -5,7 +5,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @post = Post.find(params[:id])
+    # @post = Post.find(params[:id])
+    @posts = @user.posts
   end
 
   def edit
@@ -15,10 +16,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to user_path(@user)
-  end
-
-  def complete
+    redirect_to user_path(@user), notice: "更新しました"
   end
 
   private

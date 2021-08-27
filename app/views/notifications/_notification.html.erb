@@ -1,7 +1,14 @@
  <% action_user = notification.action_user %>
  <% ationed_user = notification.ationed_user %>
-  
-  <%== notification_form(notification) %>
-  <%= " (#{time_ago_in_words(notification.created_at)}前)" %>
-  
-  <p class="moderate-font"><%= Post.find_by(id: notification.post_id).body %></p>
+
+  <div class = "notification font-weight-bold">
+    <%== notification_form(notification) %>
+    <% if time_ago_in_words(notification.created_at) == "1分以内" %>
+      <%= " (#{time_ago_in_words(notification.created_at)})" %>
+    <% else %>
+      <%= " (#{time_ago_in_words(notification.created_at)}前)" %>
+    <% end %>
+    <p class="font-weight-normal">
+      <%= Post.find_by(id: notification.post_id).body %>
+    </p>
+  </div>

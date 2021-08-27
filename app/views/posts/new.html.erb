@@ -1,25 +1,40 @@
-<h1>投稿</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <%= render "layouts/errors", obj: @post %>
+      <h2 class="text-center">投稿</h2>
 
-<%= form_with model:@post, local:true do |f| %>
+        <%= form_with model:@post, local:true do |f| %>
+        <table class= "ml-3">
+          <thead></thead>
+          <tbody>
+            <tr>
+            <div>
+              <td><%= f.label "実施エリア" %></td>
+              <td><%= f.text_field :area, size: "40" %></td>
+            </div>
+            </tr>
 
-<div>
-  <%= f.label "実施エリア" %>
-  <%= f.text_field :area %>
+            <tr>
+            <div>
+              <td><%= f.label "タグ" %></td>
+              <td><%= f.text_field :tag_ids, id:"tag_ids", placeholder: "複数タグを登録する場合は','で区切る", size: "40" %></td>
+            </div>
+            <tr>
+
+            <tr>
+            <div>
+              <td><%= f.label "内容" %></td>
+              <td><%= f.text_area :body, size: "43" %></td>
+            </div>
+            <tr>
+          </tbody>
+        </table>
+
+        <div class="text-center">
+          <%= f.submit "投稿する", class: "btn btn-success mt-2 btn-lg" %>
+        </div>
+        <% end %>
+    </div>
+  </div>
 </div>
-
-<div>
-  <%= f.label "タグ" %>
-  <%= f.text_field :tag_ids, id:"tag_ids" %>
-</div>
-
-<div>
-  <%= f.label "内容" %>
-  <%= f.text_area :body %>
-</div>
-
-<div>
-  <%= f.submit "投稿する", class: "btn btn-success" %>
-</div>
-
-
-<% end %>

@@ -7,12 +7,7 @@ class TagsController < ApplicationController
   def create
     @tag = Tag.new(tag_params)
     # @tag = current_user.tags.build(tag_params)
-    if @tag.save
-      redirect_to request.referer notice: "タグを登録しました。"
-    else
-      @tags = Tag.all
-      render "index"
-    end
+    @tag.save
   end
 
   def edit
@@ -22,7 +17,7 @@ class TagsController < ApplicationController
   def update
     @tag = Tag.find(params[:id])
     if @tag.update(tag_params)
-      redirect_to tags_path, notice: "タグを更新しました。"
+      redirect_to tags_path
     else
       render "index"
     end
@@ -31,7 +26,7 @@ class TagsController < ApplicationController
   def destroy
     @tag = Tag.find(params[:id])
     @tag.destroy
-    redirect_to tags_path, notice: "タグを削除しました。"
+    redirect_to tags_path, notice: "タグを削除しました"
   end
 
   private

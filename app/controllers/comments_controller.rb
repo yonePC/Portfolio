@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     if @comment.save
       @comment.post.create_notification_comment!(current_user, @comment.id) # コメント通知
-      redirect_to post_path(@post.id)
+      redirect_to post_path(@post.id), notice: "コメントを投稿しました"
     else
       render "posts/show"
     end
@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     comment = @post.comments.find(params[:id])
     comment.destroy
-    redirect_to request.referer
+    redirect_to request.referer, notice: "コメントを削除しました"
   end
 
   private
