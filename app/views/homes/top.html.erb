@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="mx-auto">
+      <h1>ようこそ</h1>
+
+      <div class="row">
+        <%= link_to "ログイン",new_user_session_path, class: "btn btn-info btn-block mb-3 sign_in" %>
+      </div>
+      <div class="row">
+        登録がお済みでない方は
+          <%= link_to "こちら",new_user_registration_path, class: "btn btn-success btn-sm" %>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-10 mt-3 mx-auto">
+      <h2>ユーザー一覧</h2>
+
+        <table class="table table-striped users_table">
+          <thead class="users_index_thead">
+            <tr>
+              <th>社員番号</th>
+              <th>名前</th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @users.each do |user| %>
+            <tr>
+              <td><%= user.number %></td>
+              <td><%= user.name %></td>
+              <td><%= link_to '詳細', user_path(user), class: "btn btn-secondary" %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+

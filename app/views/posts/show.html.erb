@@ -1,0 +1,132 @@
+<div class="container">
+  <div class="row">
+    <div class="col-10 mt-3 mx-auto">
+    <%= render "layouts/errors", obj: @comment %>
+      <h2>投稿詳細</h2>
+
+      <table class= "table post_table">
+        <thead class="post_table">
+          <tr>
+            <th><!--時刻--></th>
+            <th>名前</th>
+            <th>実施エリア</th>
+            <th>タグ</th>
+            <th>内容</th>
+            <th><!--stamp--></th>
+            <th></th>
+          </tr>
+        <thead>
+
+        <tbody>
+          <tr>
+          <td>
+            <%= @post.datetime %>
+          </td>
+
+          <td>
+            <%= @post.user.number %></br>
+            <%= @post.user.name %>
+          </td>
+
+          <td>
+            <%= @post.area %>
+          </td>
+
+          <td>
+            <% @post.tags.each do |tag| %>
+              <%= tag.name %></br>
+            <% end %>
+          </td>
+
+          <td>
+            <%= @post.body %>
+          </td>
+
+          <!--スタンプ-->
+          <td>
+            <% if @post.stamped_by?(current_user) %>
+              <%= link_to post_stamps_path(@post), method: :delete, class: "fas fa-check-square fa-2x check_gleen" do %>
+              <% end %>
+              (<%= @post.stamps.count %>)
+            <% else %>
+              <%= link_to post_stamps_path(@post), method: :post, class: "far fa-square fa-2x" do %>
+              <% end %>
+              (<%= @post.stamps.count %>)
+            <% end %>
+          </td>
+          <!--投稿の編集/削除-->
+          <% if current_user == @post.user %>
+          <td>
+            <%= link_to "編集", edit_post_path(@post), class: "btn btn-secondary" %></br>
+            <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %>
+          </td>
+          <% end %>
+          </tr>
+        </tbody>
+      </table>
+
+
+      <!--コメント一覧-->
+      <h3>コメント(<%= @post.comments.count %>)</h3>
+        <% @post.comments.each do |comment| %>
+        <div class="comment-box">
+          <div class="comment-title">
+            <%= link_to comment.user.name, user_path(comment.user) %>
+          </div>
+
+          <span><%= comment.body %></span>
+
+          <% if current_user == comment.user %>
+          	<%= link_to "削除", post_comment_path(comment.post_id, comment.id), data: {confirm: "このコメントを削除しますか？"}, class: "btn-sm btn-danger", method: :delete %>
+        	<% end %>
+
+          <!--星評価表示-->
+          <span class="star-right">
+            <span id="comment-rate-<%= comment.id %>">
+                <script>
+                  $('#comment-rate-<%= comment.id %>').raty({
+                    size:  60,
+                    starOff:  '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    half: true,
+                    readOnly: true,
+                    score: <%= comment.rate %>,
+                  });
+                </script>
+            </span>
+          </span>
+        </div>
+        <% end %>
+
+
+      <!--コメント投稿-->
+        <%= form_with model:[@post,@comment], local: true do |f| %>
+          <%= f.text_area :body, size:"90x5", :placeholder => "ここに評価コメントを記入してください。" %><br>
+      <!--星評価投稿-->
+          <div id= "rate-form", class="rate-form" >
+            <%= f.label :rate,"評価" %>
+            <%= f.hidden_field :rate, id: :review_star %>
+          </div>
+          <div>"<span id="hint1"></span>"</div>
+          <%= f.submit "コメントを投稿", class: "btn btn-warning mb-3"%>
+        <% end %>
+
+
+          <script>
+            $('#rate-form').raty({
+
+                starOn: '<%= asset_path('star-on.png') %>',
+                starOff: '<%= asset_path('star-off.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                scoreName: 'comment[rate]',
+                half: true,
+                target: '#hint1',
+                hints: ["とても悪い", "悪い", "まあまあ", "良い", "とても良い"],
+            });
+          </script>
+
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,8 @@
+<h1>タグの登録</h1>
+
+<%= form_with model:@post, local:true do |f| %>
+  <%= text_field :tag_ids, id: "tag_ids", placeholder: "複数タグを登録する場合は','で区切ってください。" %>
+  <%= f.submit "投稿する", class: "btn btn-success" %>
+<% end %>
+
+

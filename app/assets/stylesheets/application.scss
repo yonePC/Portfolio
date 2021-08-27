@@ -1,0 +1,141 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+.rate-form img{ /*星評価画像の大きさ*/
+  width:40px;
+// 	height:30px;
+}
+
+.header_color{
+  background-color: #282d33;
+}
+
+body {
+  background-color: lightsteelblue;
+}
+
+.error_explanation {
+  color: red;
+}
+
+.users_table{
+  padding: 0.5em 1em;
+    margin: 1em 0;
+    color: steelblue; /*文字色*/
+    background: #f1f8ff; /*白背景*/
+    border-top: solid 10px #caafde;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/
+}
+
+.users_index_thead{
+  background: #caafde;
+}
+
+.post_table{
+  color: #668ad8; /*文字色*/
+  border: double 5px #668ad8;/*二重線 太さ 色*/
+  background: #f1f8ff;
+  // padding: 0.5em 0.5em 0.5em 2em;
+}
+
+
+.post_table_body{
+  color: #404040; /*文字色*/
+  border-bottom: solid 2px #dadada;/*下に灰色線*/
+  background: #f1f8ff;
+  padding: 0.5em;
+  font-weight: bold;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/
+}
+
+.notification{
+  color: #404040;/*文字色*/
+  border-left: solid 20px #afdeca;/*左側の線*/
+  border-bottom: solid 2px #dadada;/*下に灰色線*/
+  background: whitesmoke;
+  margin-bottom: 5px;/*下のバーとの余白*/
+  line-height: 1.5;
+  padding: 0.5em;
+  border-radius: 0 15px 15px 0;/*角を丸く*/
+}
+
+.notification-circle{
+  color: gold;
+  position: relative;
+  top: -1px;
+  right: 12px;
+}
+
+.tags_button{
+  color: #668ad8; /*文字色*/
+  font-weight: bold;
+  border: 2px solid #668ad8;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  &:hover {
+    background-color: #6c757d;
+  }
+}
+
+.tags_table{
+  color: #668ad8; /*文字色*/
+  border: double 7px #deafc3;/*二重線 太さ 色*/
+  background: #f1f8ff;
+  padding: 0.5em 0.5em 0.5em 2em;
+}
+
+.comment-box{
+  position: relative;
+  background: #fffacd;
+  margin: 2em 0;
+  padding: 25px 10px 7px;
+  border: dashed 2px white;
+  box-shadow: 0px 0px 0px 4px #fffacd;
+
+}
+
+.comment-box .comment-title{
+  position: absolute;
+    display: inline-block;
+    top: -8px;
+    left: -8px;
+    padding: 0 9px;
+    height: 30px;
+    line-height: 25px;
+    font-size: 17px;
+    background: #FFC107;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.comment-box:after{
+  position: absolute;
+    content: '';
+    right: -7px;
+    top: -7px;
+    border-width: 0 20px 20px 0;
+    border-style: solid;
+    border-color: #ffdb88 lightsteelblue #ffdb88;
+    box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+.star-right{
+  display: block;
+  text-align: right;
+}

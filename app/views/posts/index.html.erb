@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <div class="col-11 mt-3 mx-auto">
+      <h2>
+        <td>投稿一覧</td>
+        <td class="mt-auto"><%= link_to "＋", new_post_path, class: "btn btn-outline-secondary text-dark" %></td>
+      </h2>
+
+        <table class= "table table-responsive table-hover post_table">
+          <thead class="post_table">
+            <tr>
+              <th style="width: 10%"><!--時刻--></th>
+              <th>名前</th>
+              <th>実施エリア</th>
+              <th><%= link_to "タグ", tags_path, class: "tags_button" %></th>
+              <th>内容</th>
+              <th style="width: 12%"><!--コメント数--></th>
+            </tr>
+          <thead>
+
+          <tbody>
+            <% @posts.each do |post| %>
+            <tr class="post_table_body">
+              <td>
+                <%= post.datetime %>
+              </td>
+
+              <td>
+                <%= post.user.number %></br>
+                <%= post.user.name %>
+              </td>
+
+              <td>
+                <%= post.area %>
+              </td>
+
+              <td>
+                <% post.tags.each do |tag| %>
+                  <%= tag.name %>
+                <% end %>
+              </td>
+
+              <td>
+                <%= post.body %>
+              </td>
+
+              <td>
+                コメント(<%= post.comments.count %>)
+              </td>
+
+              <td>
+                <%= link_to "詳細", post_path(post), class: "btn btn-secondary" %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>
+
