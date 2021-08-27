@@ -78,3 +78,8 @@ group :development do
 end
 
 gem 'font-awesome-sass'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
