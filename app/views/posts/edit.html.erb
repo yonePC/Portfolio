@@ -3,7 +3,7 @@
     <div class="col-6 mx-auto">
       <%= render "layouts/errors", obj: @post %>
       <h2 class="text-center">投稿編集</h2>
-      
+
         <%= form_with model:@post, local: true do |f| %>
         <table>
           <thead></thead>
@@ -14,14 +14,14 @@
               <td><%= f.text_field :area, size: "40" %></td>
             </div>
             </tr>
-    
+
             <tr>
             <div>
               <td><%= f.label "タグ" %></td>
               <td><%= f.text_field :tag_ids, value: @tag_list, placeholder: "複数タグを登録する場合は','で区切る", size: "40" %></td>
             </div>
             </tr>
-    
+
             <tr>
             <div>
               <td><%= f.label "内容" %></td>
@@ -35,7 +35,6 @@
         <td><%= f.submit "更新", class: "btn btn-primary w-75 ml-5 mt-2" %></td>
       </div>
       <% end %>
-      
       <td><%= link_to "戻る", post_path(@post), class: "btn btn-secondary w-75 ml-5 mt-2" %></td>
     </div>
   </div>
