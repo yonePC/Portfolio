@@ -27,12 +27,13 @@ LINEやSlackなどのいつものコミュニケーションツールを使用�
 棚卸における商品の読み込み完了の報告と読み込みエリアの管理
 
 ## 設計書
-![ポートフォリオER図](https://user-images.githubusercontent.com/85168396/129333920-109aaed9-d8ab-44e3-b583-d9d14b0891f0.jpg)
+![ポートフォリオER図](https://user-images.githubusercontent.com/85168396/131243918-0fc676d1-d60a-4c44-b2f5-3883a69513f3.jpg)
+
 
 
 ## チャレンジ要素一覧
 
-https://docs.google.com/spreadsheets/d/1UhcBJDJNoJqapBGfK0BGhXls8Vlu0_-TNQWV1BuGqIs/edit#gid=0
+https://docs.google.com/spreadsheets/d/1UhcBJDJNoJqapBGfK0BGhXls8Vlu0_-TNQWV1BuGqIs/edit?usp=sharing
 
 ## 開発環境
 
