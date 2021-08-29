@@ -19,7 +19,6 @@
 
 .rate-form img{ /*星評価画像の大きさ*/
   width:40px;
-// 	height:30px;
 }
 
 .header_color{
@@ -36,11 +35,11 @@ body {
 
 .users_table{
   padding: 0.5em 1em;
-    margin: 1em 0;
-    color: steelblue; /*文字色*/
-    background: #f1f8ff; /*白背景*/
-    border-top: solid 10px #caafde;
-    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/
+  margin: 1em 0;
+  color: steelblue; /*文字色*/
+  background: #f1f8ff; /*白背景*/
+  border-top: solid 10px #caafde;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/
 }
 
 .users_index_thead{
@@ -107,7 +106,6 @@ body {
   padding: 25px 10px 7px;
   border: dashed 2px white;
   box-shadow: 0px 0px 0px 4px #fffacd;
-
 }
 
 .comment-box .comment-title{
@@ -124,7 +122,7 @@ body {
     font-weight: bold;
 }
 
-.comment-box:after{
+.comment-box:after{ /*めくれ部分*/
   position: absolute;
     content: '';
     right: -7px;
