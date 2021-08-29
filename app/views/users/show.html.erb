@@ -50,13 +50,18 @@
             </td>
 
             <td>
+              <% if post.stamped_by?(current_user) %>
+                <i class="fas fa-check-square fa-2x check_gleen"></i>
+              <% else %>
+                <i class="far fa-square fa-2x"></i>
+              <% end %>
               コメント(<%= post.comments.count %>)
             </td>
 
             <td>
               <% if current_user == post.user %>
-              <%= link_to "編集", edit_post_path(post.user), class: "btn btn-secondary" %>
-              <%= link_to "削除", post_path(post.user), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %>
+              <%= link_to "詳細", post_path(post), class: "btn btn-secondary" %>
+              <%= link_to "削除", post_path(post), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %>
               <% end %>
             </td>
           </tr>

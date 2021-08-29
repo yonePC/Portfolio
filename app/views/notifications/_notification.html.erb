@@ -2,7 +2,7 @@
  <% ationed_user = notification.ationed_user %>
 
   <div class = "notification font-weight-bold">
-    <%== notification_form(notification) %>
+    <%== notification_form(notification) %> <!--notifications_helperに定義-->
     <% if time_ago_in_words(notification.created_at) == "1分以内" %>
       <%= " (#{time_ago_in_words(notification.created_at)})" %>
     <% else %>
