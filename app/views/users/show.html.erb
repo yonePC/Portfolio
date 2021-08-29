@@ -18,14 +18,15 @@
         <td>投稿一覧</td>
         <td class="mt-auto"><%= link_to "＋", new_post_path, class: "btn btn-outline-secondary text-dark" %></td>
       </h2>
+       <div class="table-responsive">
        <table class= "table table-hover post_table">
         <thead class="post_table">
           <tr>
-            <th><!--時刻--></th>
-            <th>名前</th>
-            <th>実施エリア</th>
+            <th width="110"><!--時刻--></th>
+            <th width="120">名前</th>
+            <th width="110">実施エリア</th>
             <th>内容</th>
-            <th><!--コメント数--></th>
+            <th width="150"><!--コメント数--></th>
           </tr>
          <thead>
 
@@ -37,7 +38,7 @@
             </td>
 
             <td>
-              <%= post.user.number %>
+              <%= post.user.number %></br>
               <%= post.user.name %>
             </td>
 
@@ -68,6 +69,7 @@
           <% end %>
          </tbody>
        </table>
+       </div>
       </div>
     </div>
   </div>

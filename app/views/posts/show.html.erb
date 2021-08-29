@@ -4,15 +4,16 @@
     <%= render "layouts/errors", obj: @comment %>
       <h2>投稿詳細</h2>
 
+      <div class="table-responsive">
       <table class= "table post_table">
         <thead class="post_table">
           <tr>
-            <th><!--時刻--></th>
-            <th>名前</th>
-            <th>実施エリア</th>
+            <th width="110"><!--時刻--></th>
+            <th width="120">名前</th>
+            <th width="110">実施エリア</th>
             <th>タグ</th>
             <th>内容</th>
-            <th><!--コメント--></th>
+            <th width="90"><!--スタンプ--></th>
             <th></th>
           </tr>
         <thead>
@@ -64,6 +65,7 @@
           </tr>
         </tbody>
       </table>
+      </div>
 
 
     <!--コメント一覧-->
