@@ -70,7 +70,7 @@
 
     <!--コメント一覧-->
       <h3>コメント(<%= @post.comments.count %>)</h3>
-        <% @post.comments.each do |comment| %>
+        <% @post_comments.each do |comment| %>
         <div class="comment-box">
           <div class="comment-title">
             <%= link_to comment.user.name, user_path(comment.user) %>

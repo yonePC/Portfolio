@@ -9,5 +9,4 @@ class Comment < ApplicationRecord
   def comment_pt
     (score.to_f * 10).round
   end
-
 end
