@@ -2,7 +2,15 @@
   <div class="row">
     <div class="col-10 mt-3 mx-auto">
     <%= render "layouts/errors", obj: @comment %>
-      <h2>投稿詳細</h2>
+      <span class="h2">投稿詳細</span>
+      <span>
+        <% if (@post.comments.sum(:score)*10).round > 0 %>
+          <span class="h4 text-success"> [<%= (@post.comments.sum(:score)*10).round %>pt]</span>
+        <% else %>
+          <span class="h4 text-danger"> [<%= (@post.comments.sum(:score)*10).round %>pt]</span>
+        <% end %>
+      </span>
+
 
       <div class="table-responsive">
       <table class= "table post_table">
@@ -68,15 +76,23 @@
       </div>
 
 
-    <!--コメント一覧-->
+    <!--コメント表示-->
       <h3>コメント(<%= @post.comments.count %>)</h3>
-        <% @post.comments.each do |comment| %>
+        <% @post_comments.each do |comment| %>
         <div class="comment-box">
           <div class="comment-title">
             <%= link_to comment.user.name, user_path(comment.user) %>
           </div>
 
           <span><%= comment.body %></span>
+    <!--コメントPT-->
+          <span class="sentiment-score">
+            <% if comment.comment_pt > 0 %>
+              <span class="text-success font-weight-bold"> [<%= comment.comment_pt %>pt]</span>
+            <% else %>
+              <span class="text-danger font-weight-bold"> [<%= comment.comment_pt %>pt]</span>
+            <% end %>
+          </span>
 
           <% if current_user == comment.user %>
           	<%= link_to "削除", post_comment_path(comment.post_id, comment.id), data: {confirm: "このコメントを削除しますか？"}, class: "btn-sm btn-danger", method: :delete %>
@@ -84,6 +100,13 @@
 
     <!--星評価表示-->
           <span class="star-right">
+            <span>
+              <% if time_ago_in_words(comment.created_at) == "1分以内" %>
+                <%= " (#{time_ago_in_words(comment.created_at)})" %>
+              <% else %>
+                <%= " (#{time_ago_in_words(comment.created_at)}前)" %>
+              <% end %>
+            </span>
             <span id="comment-rate-<%= comment.id %>">
                 <script>
                   $('#comment-rate-<%= comment.id %>').raty({
