@@ -70,13 +70,14 @@
 
     <!--コメント一覧-->
       <h3>コメント(<%= @post.comments.count %>)</h3>
-        <% @post.comments.each do |comment| %>
+        <% @post_comments.each do |comment| %>
         <div class="comment-box">
           <div class="comment-title">
             <%= link_to comment.user.name, user_path(comment.user) %>
           </div>
 
           <span><%= comment.body %></span>
+          <span class="sentiment-score">[<%= comment.comment_pt %>pt]</span>
 
           <% if current_user == comment.user %>
           	<%= link_to "削除", post_comment_path(comment.post_id, comment.id), data: {confirm: "このコメントを削除しますか？"}, class: "btn-sm btn-danger", method: :delete %>
@@ -84,6 +85,13 @@
 
     <!--星評価表示-->
           <span class="star-right">
+            <span>
+              <% if time_ago_in_words(comment.created_at) == "1分以内" %>
+                <%= " (#{time_ago_in_words(comment.created_at)})" %>
+              <% else %>
+                <%= " (#{time_ago_in_words(comment.created_at)}前)" %>
+              <% end %>
+            </span>
             <span id="comment-rate-<%= comment.id %>">
                 <script>
                   $('#comment-rate-<%= comment.id %>').raty({

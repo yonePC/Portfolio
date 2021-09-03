@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.post_id = @post.id
     @comment.user_id = current_user.id
+    @comment.score = Language.get_data(comment_params[:body]) # API追加分
     if @comment.save
       @comment.post.create_notification_comment!(current_user, @comment.id) # コメント通知
       redirect_to post_path(@post.id), notice: "コメントを投稿しました"
