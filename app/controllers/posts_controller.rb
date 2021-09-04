@@ -10,7 +10,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post_comments = @post.comments.order("created_at DESC")
     @comment = Comment.new
-    @comment_pt_sum = @post.comments.sum(:score) * 10.round
+    @comment_pt_sum = (@post.comments.sum(:score) * 10).round
   end
 
   def new
