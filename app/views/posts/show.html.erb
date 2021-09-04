@@ -4,10 +4,10 @@
     <%= render "layouts/errors", obj: @comment %>
       <span class="h2">投稿詳細</span>
       <span>
-        <% if (@post.comments.sum(:score)*10).round > 0 %>
-          <span class="h4 text-success"> [<%= (@post.comments.sum(:score)*10).round %>pt]</span>
+        <% if @comment_pt_sum > 0 %>
+          <span class="h4 text-success"> [<%= @comment_pt_sum %>pt]</span>
         <% else %>
-          <span class="h4 text-danger"> [<%= (@post.comments.sum(:score)*10).round %>pt]</span>
+          <span class="h4 text-danger"> [<%= @comment_pt_sum %>pt]</span>
         <% end %>
       </span>
 
