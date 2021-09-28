@@ -9,6 +9,9 @@ class CommentsController < ApplicationController
       @comment.post.create_notification_comment!(current_user, @comment.id) # コメント通知
       redirect_to post_path(@post.id), notice: "コメントを投稿しました"
     else
+      @post = Post.find(params[:post_id])
+      @post_comments = @post.comments.order("created_at DESC")
+      @comment_pt_sum = (@post.comments.sum(:score) * 10).round
       render "posts/show"
     end
   end

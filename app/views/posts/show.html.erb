@@ -87,7 +87,7 @@
           <span><%= comment.body %></span>
     <!--コメントPT-->
           <span class="sentiment-score">
-            <% if comment.comment_pt > 0 %>
+            <% if (comment.comment_pt) > 0 %>
               <span class="text-success font-weight-bold"> [<%= comment.comment_pt %>pt]</span>
             <% else %>
               <span class="text-danger font-weight-bold"> [<%= comment.comment_pt %>pt]</span>
