@@ -12,4 +12,6 @@ class User < ApplicationRecord
 
   validates :name, presence: { message: "名前を入力してください" }
   validates :number, numericality: { message: "社員番号は数値で入力してください" }
+  # validates :email, presence: { message: "メールを入力してください" }
+  # validates :password, presence: { message: "パスワードを入力してください" }
 end
