@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-11 mt-3 mx-auto">
+    <div class="col-10 mt-3 mx-auto">
       <h2>
         <td>投稿一覧</td>
         <td class="mt-auto"><%= link_to "＋", new_post_path, class: "btn btn-outline-secondary text-dark" %></td>
@@ -13,7 +13,7 @@
               <th width="110"><!--時刻--></th>
               <th width="120">名前</th>
               <th width="110">実施エリア</th>
-              <th><%= link_to "タグ", tags_path, class: "tags_button" %></th>
+              <th width="100"><%= link_to "タグ", tags_path, class: "tags_button" %></th>
               <th>内容</th>
               <th width="150"><!--コメント数--></th>
             </tr>
@@ -37,7 +37,7 @@
 
               <td>
                 <% post.tags.each do |tag| %>
-                  <%= tag.name %>
+                  <%= tag.name %></br>
                 <% end %>
               </td>
 

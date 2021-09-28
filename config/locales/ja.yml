@@ -1,6 +1,28 @@
 ---
 ja:
   activerecord:
+    models:
+      user: "ユーザー"
+      tag: "タグ"
+      post: "投稿"
+      comment: "コメント"
+    attributes:
+      user:
+        name: "名前"
+        email: "メール"
+        password: "パスワード"
+        number: "社員番号"
+      tag:
+        name: "タグ名"
+      post:
+        area: "実施エリア"
+        body: "内容"
+      comment:
+        rate: "星評価"
+        body: "評価コメント"
+
+
+
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -107,7 +129,7 @@ ja:
       month: 月
       year: 年
   errors:
-    format: "%{message}"
+    format: "%{attribute}%{message}"
     messages:
       accepted: を受諾してください
       blank: を入力してください
